@@ -2,11 +2,12 @@ const express =require ('express');
 const app = express();
 const userDetails = require("./Schema/Schema.js")
 const user = require("./config/db.js");
-
+const cors = require('cors');
 
 
 user();
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 app.get('/',async(req,res)=>{
     const details = await userDetails.find()
